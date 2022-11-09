@@ -1,0 +1,26 @@
+.profile-info__edit {
+  cursor: pointer;
+  padding: 0;
+  background-color: #000;
+  background-image: url('../../../images/icon_changes.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+}
+
+@media screen and (min-width: 426px) {
+  .profile-info__edit {
+    min-width: 24px;
+    min-height: 24px;
+    margin-left: 19px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .profile-info__edit {
+    min-width: 18px;
+    min-height: 18px;
+    margin-left: 10px;
+    margin-bottom: 4px;
+  }
+}

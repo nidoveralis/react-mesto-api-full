@@ -1,0 +1,4 @@
+.header__message {
+  display: flex;
+  justify-content: space-between;
+}

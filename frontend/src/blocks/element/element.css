@@ -1,0 +1,16 @@
+.element {
+  width: 282px;
+  min-height: 361px;
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 282px auto;
+  grid-template-columns: auto 44px;
+  position: relative;
+}

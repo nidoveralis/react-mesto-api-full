@@ -1,0 +1,11 @@
+.button {
+  transition: opacity .3s linear;
+  -webkit-transition: opacity .3s linear;
+  -moz-transition: opacity .3s linear;
+  -ms-transition: opacity .3s linear;
+  -o-transition: opacity .3s linear;
+}
+
+.button:hover {
+  opacity: .6;
+}

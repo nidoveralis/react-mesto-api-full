@@ -1,0 +1,26 @@
+.login__form {
+  margin: 60px auto 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  cursor: default;
+  width: 359px;
+}
+
+@media screen and (min-width: 461px) {
+  .login___form {
+    padding: 34px 36px 0;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .login___form {
+    padding: 27px 23px;
+  }
+}

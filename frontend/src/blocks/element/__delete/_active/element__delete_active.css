@@ -1,0 +1,4 @@
+.element__delete_active {
+  display: block;
+  cursor: pointer;
+}

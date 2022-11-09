@@ -1,0 +1,6 @@
+.popup-info__image {
+  cursor: default;
+  max-width: 112vw;
+  max-height: 75vh;
+  padding-bottom: 32px;
+}

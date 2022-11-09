@@ -1,0 +1,33 @@
+.profile-info__title {
+  font-weight: 500;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: calc(100% - 45px);
+  max-width: 294px;
+}
+
+@media screen and (min-width: 431px) {
+  .profile-info__title {
+    font-size: 42px;
+    line-height: 48px;
+    padding-bottom: 8px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .profile-info__title {
+    max-width: 189px;
+    font-size: 27px;
+    line-height: 33px;
+    padding-left: 28px;
+    padding-bottom: 6px;
+  }
+}
+
+@media screen and (min-width: 320px) {
+  .profile-info__title {
+    padding-left: 0px;
+  }
+}

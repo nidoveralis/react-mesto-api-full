@@ -22,4 +22,6 @@ app.use(errorLogger);
 app.use(errors());
 app.use(errorsHandler);
 
-app.listen(PORT);
+app.listen(PORT, () => {
+    console.log(`App listening on port ${PORT}`);
+});

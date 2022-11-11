@@ -8,6 +8,12 @@ const { validationSignup, validationSignin } = require('../validation/validation
 const { createUser, login } = require('../controllers/users');
 const NotFound = require('../errors/NotFound');
 
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+}); 
+
 router.post('/signin', validationSignin, login);
 router.post('/signup', validationSignup, createUser);
 

@@ -99,21 +99,23 @@ import config from './utils'
   };
 
   signUp(password,email) {
-    return fetch('https://auth.nomoreparties.co/signup', {
+    return fetch(`${this._baseUrl}/signup`, {
       method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({password,email})
-    },
-    )
-    .then(res=>this._getResponseData(res))
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({password,email})
+      },
+      )
+      .then(res=>this._getResponseData(res))
   };
 
   signIn(data) {
-    return fetch('https://auth.nomoreparties.co/signin', {
+    return fetch(`${this._baseUrl}/signin`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -123,8 +125,9 @@ import config from './utils'
     )
     .then(res=>this._getResponseData(res)).then((data)=>{
       if (data.token){
-        localStorage.setItem('jwt', data.token);
-        return data;
+        console.log(data)
+        //localStorage.setItem('jwt', data.token);
+        //return data;
       } else {
         return;
       }

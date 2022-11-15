@@ -13,7 +13,7 @@ const allowedCors = [
   'http://mesto.diakova.nomoredomains.icu',
   'https://mesto.app.diakova.nomoredomains.icu',
   'http://mesto.app.diakova.nomoredomains.icu',
-  'http://localhost:3000'];
+  'localhost:3000'];
 
 const app = express();
 
@@ -32,6 +32,7 @@ app.use((req, res, next) => {
     return res.end();
   }
   next();
+  return true;
 });
 
 app.use(bodyParser.json()); // для собирания JSON-формата

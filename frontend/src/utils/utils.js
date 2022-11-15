@@ -17,8 +17,8 @@ const config = {
   //baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-46',
   baseUrl: 'http://mesto.app.diakova.nomoredomains.icu',
   headers: {
-    //authorization: '06e3f763-f2b1-4684-bbaa-5354631af55c',
-    authorization: 'Bearer ${jwt}',
+    authorization: '06e3f763-f2b1-4684-bbaa-5354631af55c',
+   // authorization: 'Bearer ${jwt}',
     'Content-Type': 'application/json'
 }
 };

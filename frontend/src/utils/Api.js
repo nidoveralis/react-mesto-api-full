@@ -135,11 +135,11 @@ import config from './utils'
   };
 
   checkToken(token) {
-    return fetch ('https://auth.nomoreparties.co/users/me', {
+    return fetch (`${this._baseUrl}/users/me`, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
-        "Authorization" : `Bearer ${token}`
+        //"Authorization" : `Bearer ${token}`
       },
     })
     .then(res=>this._getResponseData(res))

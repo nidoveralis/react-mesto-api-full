@@ -13,7 +13,7 @@ const allowedCors = [
   'http://mesto.diakova.nomoredomains.icu',
   'https://mesto.app.diakova.nomoredomains.icu',
   'http://mesto.app.diakova.nomoredomains.icu',
-  'localhost:3000'];
+  'http://localhost:3000'];
 
 const app = express();
 

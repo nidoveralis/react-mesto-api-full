@@ -129,7 +129,8 @@ import config from './utils'
         //localStorage.setItem('jwt', data.token);
         //return data;
       } else {
-        return;
+        console.log(data)
+        //return;
       }
     })
   };

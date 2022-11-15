@@ -24,6 +24,7 @@ app.use((req, res, next) => {
   const allowMethods = 'GET,HEAD,PUT,PATCH,POST,DELETE';
   if (allowedCors.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Credentials', 'true');
   }
   if (method === 'OPTIONS') {
     res.header('Access-Control-Allow-Headers', requestHeaders);

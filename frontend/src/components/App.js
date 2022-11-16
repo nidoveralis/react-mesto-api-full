@@ -87,7 +87,7 @@ function App() {
       console.log(data)/////
       setUserData(data.data.email);/////
       openMainComponent();//////
-    });/////
+    });/////np
     const jwt = localStorage.getItem('jwt');
       if(jwt) {
         api.checkToken(jwt).then(data=>{

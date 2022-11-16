@@ -98,6 +98,7 @@ module.exports.editAvatar = (req, res, next) => {
 };
 
 module.exports.login = (req, res, next) => {
+  console.log('login')
   const { email, password } = req.body;
   return User.findUserByCredentials({ email, password })
     .then((user) => {

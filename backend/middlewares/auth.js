@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
   const token = req.cookies.jwt;
   console.log(req);
   if (!token) {
-    next(new IncorrectImailOrPassword('Необходима авторизация.'));
+    next(new IncorrectImailOrPassword('Необходима авторизация.', req));
   }
   // const token = authorization;
   let payload;

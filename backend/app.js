@@ -14,7 +14,8 @@ const allowedCors = [
   'http://mesto.diakova.nomoredomains.icu',
   'https://mesto.app.diakova.nomoredomains.icu',
   'http://mesto.app.diakova.nomoredomains.icu',
-  'http://localhost:3000'];
+  'http://localhost:3000'
+];
 
 const app = express();
 
@@ -29,7 +30,7 @@ app.use((req, res, next) => {
   const { method } = req;
   const requestHeaders = req.headers['access-control-request-headers'];
   const allowMethods = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-  if (allowedCors.includes(origin)) {
+  if ('https://mesto.diakova.nomoredomains.icu/'.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
     res.header('Access-Control-Allow-Credentials', 'true');
   }

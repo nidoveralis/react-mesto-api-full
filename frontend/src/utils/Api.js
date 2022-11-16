@@ -15,8 +15,12 @@ import config from './utils'
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers,
+      //headers: this._headers,
       credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
     })
     .then(res => this._getResponseData(res)
     )

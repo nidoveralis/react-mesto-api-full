@@ -36,9 +36,13 @@ function App() {
   };
 
   function logIn(data) {
-    api.signIn(data).then(()=>{
+    console.log({email: data.email, password: data.password})
+    api.signIn({email: data.email, password: data.password}).then((datas)=>{
+      //console.log(datas)
       openMainComponent();
     });
+    api.getUserInfo().then(data=>{/////
+       console.log(data)})
   };
   
   function removeUserToken() {
@@ -82,13 +86,16 @@ function App() {
     //setAnswer('')
   };
 
-  React.useEffect(()=>{
-    if(loggedIn) {
-      console.log('useeff')
-      api.getUserInfo.then(data=>{/////
-         console.log(data)/////
-    })}
-  }, [loggedIn]);
+  //React.useEffect(()=>{
+    //if(loggedIn) {
+      //api.signIn().then(data=>{/////
+       // console.log(data)
+      //console.log('useeff')
+      //api.getUserInfo().then(data=>{/////
+        // console.log(data)/////
+  //  }).catch(e=>console.log(e));
+  //}
+  //}, [loggedIn]);
 
   React.useEffect(()=>{
    // api.getUserInfo().then(data=>{/////

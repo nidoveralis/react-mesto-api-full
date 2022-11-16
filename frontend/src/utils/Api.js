@@ -141,7 +141,8 @@ import config from './utils'
       method: 'GET',
       credentials: 'include',
       headers: {
-        authorization: this._token
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
     }
      // headers: {
        // 'Accept': 'application/json',

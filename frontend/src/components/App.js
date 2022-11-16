@@ -83,11 +83,17 @@ function App() {
   };
 
   React.useEffect(()=>{
-    api.getUserInfo().then(data=>{/////
-      console.log(data)/////
-      setUserData(data.data.email);/////
-      openMainComponent();//////
-    });/////np
+    if(loggedIn) {
+      console.log('useeff')
+    }
+  }, [loggedIn]);
+
+  React.useEffect(()=>{
+   // api.getUserInfo().then(data=>{/////
+     // console.log(data)/////
+      //setUserData(data.data.email);/////
+      //openMainComponent();//////
+    //});/////np
     const jwt = localStorage.getItem('jwt');
       if(jwt) {
         api.checkToken(jwt).then(data=>{

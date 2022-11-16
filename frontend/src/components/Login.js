@@ -12,7 +12,8 @@ function Login(props) {
     setPasswordValue(e.target.value);
   }
 
-  function signIn() {
+  function signIn(e) {
+    e.preventDefault();//
     const { password,email } = {
       password: passwordValue,
       email: emailValue

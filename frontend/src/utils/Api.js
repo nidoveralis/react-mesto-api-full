@@ -28,7 +28,12 @@ import config from './utils'
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
-      headers: this._headers
+      //headers: this._headers
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
     })
     .then(res => this._getResponseData(res))
   };
@@ -36,8 +41,12 @@ import config from './utils'
   setUserInfo(data) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
-      headers: this._headers,
+      //headers: this._headers,
       credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
       body: JSON.stringify({
         name: data.name,
         about: data.about
@@ -50,7 +59,12 @@ import config from './utils'
   addNewCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
-      headers: this._headers,
+      //headers: this._headers,
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
       body: JSON.stringify({
         name: data.name,
         link: data.link
@@ -62,7 +76,12 @@ import config from './utils'
   deleteCard(data) {
     return fetch(`${this._baseUrl}/cards/${data}`, {
       method: 'DELETE',
-      headers: this._headers
+      //headers: this._headers
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
     })
     .then(res=>this._getResponseData(res))
   };
@@ -71,7 +90,12 @@ import config from './utils'
     if(!isLike){
       return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
         method: 'DELETE',
-        headers: this._headers
+        //headers: this._headers
+        credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
       })
       .then(res=>this._getResponseData(res))
     }else{
@@ -86,7 +110,12 @@ import config from './utils'
 
   showAvatar() {
     return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers,
+      //headers: this._headers,
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
     },
     )
     .then(res=>this._getResponseData(res))
@@ -95,7 +124,12 @@ import config from './utils'
   setUserAvatar(data) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this._headers,
+      //headers: this._headers,
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
       body: JSON.stringify({
         avatar: data.avatar
       })
@@ -151,7 +185,7 @@ import config from './utils'
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-    }
+      }
      // headers: {
        // 'Accept': 'application/json',
         //"Authorization" : `Bearer ${token}`

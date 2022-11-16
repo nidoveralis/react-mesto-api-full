@@ -15,7 +15,8 @@ import config from './utils'
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers
+      headers: this._headers,
+      credentials: 'include',
     })
     .then(res => this._getResponseData(res)
     )
@@ -32,6 +33,7 @@ import config from './utils'
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
+      credentials: 'include',
       body: JSON.stringify({
         name: data.name,
         about: data.about
@@ -125,7 +127,7 @@ import config from './utils'
     )
     .then(res=>this._getResponseData(res)).then((data)=>{
       if (data.token){
-        console.log(data)
+        //console.log(data)
         //localStorage.setItem('jwt', data.token);
         return data;
       } else {
@@ -137,10 +139,14 @@ import config from './utils'
   checkToken(token) {
     return fetch (`${this._baseUrl}/users/me`, {
       method: 'GET',
+      credentials: 'include',
       headers: {
-        'Accept': 'application/json',
+        authorization: this._token
+    }
+     // headers: {
+       // 'Accept': 'application/json',
         //"Authorization" : `Bearer ${token}`
-      },
+      //},
     })
     .then(res=>this._getResponseData(res))
   };

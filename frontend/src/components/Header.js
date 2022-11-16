@@ -3,7 +3,7 @@ import React from "react";
 import { Switch, Route, Link } from 'react-router-dom';
 
 function Header(props) {
-  
+
   return(
     <header className="header">
       <img src={Logo} alt="Логотип" className="header__logo" />

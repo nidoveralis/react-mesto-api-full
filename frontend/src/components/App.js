@@ -83,6 +83,11 @@ function App() {
   };
 
   React.useEffect(()=>{
+    api.getUserInfo().then(data=>{/////
+      console.log(data)/////
+      setUserData(data.data.email);/////
+      openMainComponent();//////
+    });/////
     const jwt = localStorage.getItem('jwt');
       if(jwt) {
         api.checkToken(jwt).then(data=>{

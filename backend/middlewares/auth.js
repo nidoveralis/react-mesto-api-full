@@ -10,7 +10,8 @@ module.exports = (req, res, next) => {
   const token = req.cookies.jwt;
   console.log(req);
   if (!token) {
-    next(new IncorrectImailOrPassword('Необходима авторизация.', req));
+    //next(new IncorrectImailOrPassword('Необходима авторизация.'));
+    next(new IncorrectImailOrPassword('Нет токена'));
   }
   // const token = authorization;
   let payload;
@@ -19,7 +20,8 @@ module.exports = (req, res, next) => {
     // payload = jwt.verify(token,  'some-secret-key');
     payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key');
   } catch (err) {
-    next(new IncorrectImailOrPassword('Необходима авторизация.', req));
+    //next(new IncorrectImailOrPassword('Необходима авторизация.'));
+    next(new IncorrectImailOrPassword('2 ауф'));
   }
   req.user = payload;
   next();

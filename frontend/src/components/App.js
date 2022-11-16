@@ -85,7 +85,9 @@ function App() {
   React.useEffect(()=>{
     if(loggedIn) {
       console.log('useeff')
-    }
+      api.getUserInfo.then(data=>{/////
+         console.log(data)/////
+    })}
   }, [loggedIn]);
 
   React.useEffect(()=>{

@@ -6,6 +6,8 @@ const IncorrectImailOrPassword = require('../errors/IncorrectImailOrPassword');
 const UsedEmail = require('../errors/UsedEmail');
 const NotFound = require('../errors/NotFound');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 module.exports.getUser = (req, res, next) => {
   User.find({})
     .then((user) => res.status(200).send(user))
@@ -98,12 +100,11 @@ module.exports.editAvatar = (req, res, next) => {
 };
 
 module.exports.login = (req, res, next) => {
-  console.log('login');
   const { email, password } = req.body;
   return User.findUserByCredentials({ email, password })
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, 'some-secret-key', { expiresIn: '7d' });
-      res.cookie('jwt', token, { maxAge: 3600000, httpOnly: true })
+      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key', { expiresIn: '7d' });
+      return res.cookie('jwt', token, { maxAge: 3600000, httpOnly: true })
         .send({
           name: user.name, about: user.about, avatar: user.avatar, email: user.email, token,
         });

@@ -126,7 +126,11 @@ import config from './utils'
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data)
+    //body: JSON.stringify(data)
+    body:JSON.stringify({
+      email: data.email,
+      password: data.password
+    })
     },
     )
     .then(res=>this._getResponseData(res)).then((data)=>{

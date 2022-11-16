@@ -10,4 +10,4 @@ router.get('/:userId', validationUserId, getUserById);
 router.patch('/me', validationEditUser, editUser);
 router.patch('/me/avatar', validationEditAvatar, editAvatar);
 
-module.exports = router; 
+module.exports = router;

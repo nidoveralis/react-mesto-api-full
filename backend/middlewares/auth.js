@@ -5,14 +5,14 @@ const IncorrectImailOrPassword = require('../errors/IncorrectImailOrPassword');
 const { NODE_ENV, JWT_SECRET } = process.env;
 
 module.exports = (req, res, next) => {
-  //const authorization = req.cookies.jwt;
-  console.log('jhhjjn')
+  // const authorization = req.cookies.jwt;
+  console.log('jhhjjn');
   const token = req.cookies.jwt;
-console.log(req)
+  console.log(req);
   if (!token) {
     next(new IncorrectImailOrPassword('Необходима авторизация.'));
   }
-  //const token = authorization;
+  // const token = authorization;
   let payload;
 
   try {

@@ -17,28 +17,28 @@ const allowedCors = ['https://mesto.diakova.nomoredomains.icu',
 
 const app = express();
 
-app.use(cors({
-  origin: allowedCors,
-  credentials: true,
-  methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE'],
-  allowedHeaders: ['Authorization', 'Content-type', 'Accept'],
-}));
-//app.use((req, res, next) => {
-  //const { origin } = req.headers;
-  //const { method } = req;
-  //const requestHeaders = req.headers['access-control-request-headers'];
-  //const allowMethods = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-  //if (allowedCors.includes(origin)) {
-    //res.header('Access-Control-Allow-Origin', origin);
-    //res.header('Access-Control-Allow-Credentials', 'true');
- // }
-  //if (method === 'OPTIONS') {
-    //res.header('Access-Control-Allow-Headers', requestHeaders);
-    //res.header('Access-Control-Allow-Methods', allowMethods);
-    //return res.end();
-  //}
-  //next();
-//});
+//app.use(cors({
+  //origin: allowedCors,
+  //credentials: true,
+ // methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE'],
+ // allowedHeaders: ['Authorization', 'Content-type', 'Accept'],
+//}));
+ app.use((req, res, next) => {
+ const { origin } = req.headers;
+ const { method } = req;
+ const requestHeaders = req.headers['access-control-request-headers'];
+ const allowMethods = 'GET,HEAD,PUT,PATCH,POST,DELETE';
+ if (allowedCors.includes(origin)) {
+ res.header('Access-Control-Allow-Origin', origin);
+ res.header('Access-Control-Allow-Credentials', 'true');
+ }
+ if (method === 'OPTIONS') {
+ res.header('Access-Control-Allow-Headers', requestHeaders);
+ res.header('Access-Control-Allow-Methods', allowMethods);
+ return res.end();
+ }
+ next();
+ });
 
 app.use(bodyParser.json()); // для собирания JSON-формата
 app.use(bodyParser.urlencoded({ extended: true })); // для приёма веб-страниц внутри POST-запроса

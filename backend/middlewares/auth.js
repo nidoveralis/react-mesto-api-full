@@ -19,7 +19,7 @@ module.exports = (req, res, next) => {
     // payload = jwt.verify(token,  'some-secret-key');
     payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key');
   } catch (err) {
-    next(new IncorrectImailOrPassword('Необходима авторизация.'));
+    next(new IncorrectImailOrPassword('Необходима авторизация.', req));
   }
   req.user = payload;
   next();

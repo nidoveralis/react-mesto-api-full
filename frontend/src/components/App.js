@@ -36,13 +36,9 @@ function App() {
   };
 
   function logIn(data) {
-    console.log({email: data.email, password: data.password})
-    api.signIn({email: data.email, password: data.password}).then((datas)=>{
-      //console.log(datas)
+    api.signIn(data).then(()=>{
       openMainComponent();
     });
-    api.getUserInfo().then(data=>{/////
-       console.log(data)})
   };
   
   function removeUserToken() {
@@ -86,23 +82,22 @@ function App() {
     //setAnswer('')
   };
 
-  //React.useEffect(()=>{
-    //if(loggedIn) {
-      //api.signIn().then(data=>{/////
-       // console.log(data)
-      //console.log('useeff')
-      //api.getUserInfo().then(data=>{/////
-        // console.log(data)/////
-  //  }).catch(e=>console.log(e));
-  //}
-  //}, [loggedIn]);
+  React.useEffect(() => {
+    if (loggedIn) {
+      Promise.all([api.getUserInfo(), api.getInitialCards()])
+        .then(([user, initialCards]) => {
+          api.setUserInfo(user);
+          //setCurrentUser(user);
+          //setCards(initialCards);
+        })
+        .catch((err) => console.log(err));
+    }
+    else {
+      history.push('/login')
+    }
+  }, [loggedIn, history]);
 
   React.useEffect(()=>{
-   // api.getUserInfo().then(data=>{/////
-     // console.log(data)/////
-      //setUserData(data.data.email);/////
-      //openMainComponent();//////
-    //});/////np
     const jwt = localStorage.getItem('jwt');
       if(jwt) {
         api.checkToken(jwt).then(data=>{

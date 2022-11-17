@@ -15,7 +15,6 @@ import config from './utils'
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
-      //headers: this._headers,
       credentials: 'include',
       headers: {
         'Accept': 'application/json',
@@ -28,7 +27,6 @@ import config from './utils'
 
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {
-      //headers: this._headers
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
@@ -41,7 +39,6 @@ import config from './utils'
   setUserInfo(data) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
-      //headers: this._headers,
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
@@ -59,7 +56,6 @@ import config from './utils'
   addNewCard(data) {
     return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
-      //headers: this._headers,
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
@@ -76,7 +72,6 @@ import config from './utils'
   deleteCard(data) {
     return fetch(`${this._baseUrl}/cards/${data}`, {
       method: 'DELETE',
-      //headers: this._headers
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
@@ -90,7 +85,6 @@ import config from './utils'
     if(!isLike){
       return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
         method: 'DELETE',
-        //headers: this._headers
         credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
@@ -110,7 +104,6 @@ import config from './utils'
 
   showAvatar() {
     return fetch(`${this._baseUrl}/users/me`, {
-      //headers: this._headers,
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
@@ -124,7 +117,6 @@ import config from './utils'
   setUserAvatar(data) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
-      //headers: this._headers,
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
@@ -160,7 +152,6 @@ import config from './utils'
       'Content-Type': 'application/json'
     },
     credentials: 'include',
-    //body: JSON.stringify(data)
     body:JSON.stringify({
       email: data.email,
       password: data.password
@@ -173,15 +164,6 @@ import config from './utils'
         return data;
       } 
     })
-    //.then(res=>this._getResponseData(res)).then((data)=>{
-      //if (data.token){
-        //console.log(data)
-        //localStorage.setItem('jwt', data.token);
-       // return data;
-      //} else {
-       // return
-     // }
-    //})
   };
 
   checkToken(token) {
@@ -192,10 +174,6 @@ import config from './utils'
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       }
-     // headers: {
-       // 'Accept': 'application/json',
-        //"Authorization" : `Bearer ${token}`
-      //},
     })
     .then(res=>this._getResponseData(res))
   };

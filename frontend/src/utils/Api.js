@@ -155,11 +155,11 @@ import config from './utils'
   signIn(data) {
     return fetch(`${this._baseUrl}/signin`, {
       method: 'POST',
-      credentials: 'include',
       headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
+    credentials: 'include',
     //body: JSON.stringify(data)
     body:JSON.stringify({
       email: data.email,
@@ -167,15 +167,21 @@ import config from './utils'
     })
     },
     )
-    .then(res=>this._getResponseData(res)).then((data)=>{
+    .then((response => response.json()))
+    .then((data) => {
       if (data.token){
-        console.log(data)
-        //localStorage.setItem('jwt', data.token);
         return data;
-      } else {
-        return
-      }
+      } 
     })
+    //.then(res=>this._getResponseData(res)).then((data)=>{
+      //if (data.token){
+        //console.log(data)
+        //localStorage.setItem('jwt', data.token);
+       // return data;
+      //} else {
+       // return
+     // }
+    //})
   };
 
   checkToken(token) {

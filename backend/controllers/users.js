@@ -104,12 +104,13 @@ module.exports.login = (req, res, next) => {
   return User.findUserByCredentials({ email, password })
     .then((user) => {
       const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key', { expiresIn: '7d' });
-      return res.cookie('jwt', token, {
+      return res.status(200).cookie('jwt', token, {
         maxAge: 3600000, httpOnly: true,
       })
-        .send({
-          name: user.name, about: user.about, avatar: user.avatar, email: user.email, token,
-        });
+        .send(user);
+      // {
+      // name: user.name, about: user.about, avatar: user.avatar, email: user.email, token,
+      // });
     })
     .catch(() => {
       next(new IncorrectImailOrPassword('Неправильный логин или пароль'));

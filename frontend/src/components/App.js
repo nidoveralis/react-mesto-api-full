@@ -36,7 +36,7 @@ function App() {
   };
 
   function logIn(data) {
-    api.signIn(data).then(()=>{
+    api.signIn(data).then((user)=>{
       openMainComponent();
     });
   };
@@ -83,43 +83,48 @@ function App() {
   };
 
   React.useEffect(() => {
+    
+    console.log(1)
     if (loggedIn) {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
-        .then(([user, initialCards]) => {
-          api.setUserInfo(user);
+        .then(([user, initialCards]) => { console.log(user, initialCards)
+          //api.setUserInfo(user);
           //setCurrentUser(user);
           //setCards(initialCards);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.dir(err));
     }
     else {
       history.push('/login')
     }
   }, [loggedIn, history]);
 
-  React.useEffect(()=>{
-    const jwt = localStorage.getItem('jwt');
-      if(jwt) {
-        api.checkToken(jwt).then(data=>{
-          setUserData(data.data.email);
-          openMainComponent();
-        });
-      }
-  }, [loggedIn]);
+ // React.useEffect(()=>{
+   // console.log(2)
+   // const jwt = localStorage.getItem('jwt');
+     // if(jwt) {
+     //   api.checkToken(jwt).then(data=>{
+      //    setUserData(data.data.email);
+      //    openMainComponent();
+      //  });
+     // }
+  //}, [loggedIn]);
 
-  React.useEffect(()=>{
-    api.getUserInfo().then(data=>{
-      setCurrentUser(data);
-    })
-    .catch(e=>console.log(e));
-  }, []);
+ // React.useEffect(()=>{
+ //   console.log(3)
+   // api.getUserInfo().then(data=>{
+    //  setCurrentUser(data);
+    //})
+   // .catch(e=>console.log(e));
+  //}, []);
 
-  React.useEffect(() => {
-    api.getInitialCards().then(data=>{
-      setCards(data);
-    })
-    .catch(e=>console.log(e));
-  }, []);
+  //React.useEffect(() => {
+    //console.log(4)
+    //api.getInitialCards().then(data=>{
+     // setCards(data);
+    //})
+    //.catch(e=>console.log(e));
+  //}, []);
 
   function handleUpdateUser(user) {
     api.setUserInfo(user).then(data=>{

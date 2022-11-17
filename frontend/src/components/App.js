@@ -98,7 +98,7 @@ function App() {
       //setCurrentUser(data);
     })
     .catch(e=>console.log(e));
-  }, []);
+  }, [loggedIn]);
 
   React.useEffect(() => {
     api.getInitialCards().then(data=>{

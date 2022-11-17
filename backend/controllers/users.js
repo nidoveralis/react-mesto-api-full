@@ -99,49 +99,45 @@ module.exports.editAvatar = (req, res, next) => {
     });
 };
 
-// module.exports.login = (req, res, next) => {
-// const { email, password } = req.body;
-// return User.findUserByCredentials({ email, password })
-// .then((user) => {
-// const token = jwt.sign({ _id: user._id }, 
-//NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key', 
-//{ expiresIn: '7d' });
-// res.cookie('jwt', token, {
-// maxAge: 3600000, httpOnly: true,
-// });
-// res.status(200).send({ token });
-// return res.status(200).cookie('jwt', token, {
-// maxAge: 3600000, httpOnly: true,
-// })
-// {
-// name: user.name, about: user.about, avatar: user.avatar, email: user.email, token,
-// });
-// })
-// .catch(() => {
-// next(new IncorrectImailOrPassword('Неправильный логин или пароль'));
-// });
-// };
-
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
-  User.findOne({ email })
-    .select('+password')
-    .then((data) => {
-      if (!data) {
-        return res.status(401).send({ message: 'Неправильный логин или пароль' });
-      }
-      return bcrypt
-        .compare(password, data.password)
-        .then((matched) => {
-          if (!matched) {
-            return res.status(401).send({ message: 'Неправильный логин или пароль' });
-          }
-          return data;
-        })
-        .then((data) => {
-          const token = jwt.sign({ _id: data._id }, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key', { expiresIn: '7d' });
-          res.status(200).send({ token });
-        });
+  return User.findUserByCredentials({ email, password })
+    .then((user) => {
+      const token = jwt.sign(
+        { _id: user._id },
+        NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key',
+        { expiresIn: '7d' },
+      );
+      // res.cookie('jwt', token, {
+      // maxAge: 3600000, httpOnly: true,
+      // });
+      res.status(200).send({ token });
     })
-    .catch(next);
+    .catch(() => {
+      next(new IncorrectImailOrPassword('Неправильный логин или пароль'));
+    });
 };
+
+// module.exports.login = (req, res, next) => {
+// const { email, password } = req.body;
+// User.findOne({ email })
+// .select('+password')
+// .then((data) => {
+// if (!data) {
+// return res.status(401).send({ message: 'Неправильный логин или пароль' });
+// }
+// return bcrypt
+// .compare(password, data.password)
+// .then((matched) => {
+//  if (!matched) {
+//   return res.status(401).send({ message: 'Неправильный логин или пароль' });
+// }
+// return data;
+// })
+// .then((data) => {
+// const token = jwt.sign({ _id: data._id }, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key', { expiresIn: '7d' });
+// res.status(200).send({ token });
+// });
+// })
+// .catch(next);
+// };

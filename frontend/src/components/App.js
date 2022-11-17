@@ -39,7 +39,8 @@ function App() {
     console.log('user')
     api.signIn(data).then((user)=>{ console.log(user)
       openMainComponent();
-    });
+    })
+    .catch(err=>console.log(err))
   };
   
   function removeUserToken() {

@@ -104,10 +104,13 @@ module.exports.login = (req, res, next) => {
   return User.findUserByCredentials({ email, password })
     .then((user) => {
       const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key', { expiresIn: '7d' });
-      return res.status(200).cookie('jwt', token, {
+      res.cookie('jwt', token, {
         maxAge: 3600000, httpOnly: true,
-      })
-        .send(user,JWT_SECRET);
+      });
+      res.status(200).send({ token });
+      // return res.status(200).cookie('jwt', token, {
+      // maxAge: 3600000, httpOnly: true,
+      // })
       // {
       // name: user.name, about: user.about, avatar: user.avatar, email: user.email, token,
       // });

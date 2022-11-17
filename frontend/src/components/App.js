@@ -82,18 +82,19 @@ function App() {
     //setAnswer('')
   };
 
-  React.useEffect(()=>{
-    const jwt = localStorage.getItem('jwt');
-      if(jwt) {
-        api.checkToken(jwt).then(data=>{
-          setUserData(data.data.email);
-          openMainComponent();
-        });
-      }
-  }, [loggedIn]);
+  //React.useEffect(()=>{
+    //const jwt = localStorage.getItem('jwt');
+      //if(jwt) {
+        //api.checkToken(jwt).then(data=>{
+          //setUserData(data.data.email);
+          //openMainComponent();
+        //});
+      //}
+  //}, [loggedIn]);
 
   React.useEffect(()=>{
     api.getUserInfo().then(data=>{
+      console.log('rrr',data)
       setCurrentUser(data);
     })
     .catch(e=>console.log(e));

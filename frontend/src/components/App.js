@@ -32,7 +32,8 @@ function App() {
 
   function openMainComponent() {
     changeLoggedIn();
-    history.push('/');
+    //history.push('/');
+    history.push('/users/me');
   };
 
   function logIn(data) {
@@ -98,6 +99,7 @@ function App() {
     api.getUserInfo().then(data=>{
       console.log('rrr',data)
       //setCurrentUser(data);
+      history.push('/users/me');
     })
     .catch(e=>console.log(e));
   }, [loggedIn]);

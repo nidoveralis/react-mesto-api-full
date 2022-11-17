@@ -7,13 +7,14 @@ const router = require('./routes/router');
 const errorsHandler = require('./middlewares/errorsHandler');
 const { errorLogger, requestLogger } = require('./middlewares/logger');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 const allowedCors = [
   'https://mesto.diakova.nomoredomains.icu',
-  //'http://mesto.diakova.nomoredomains.icu',
+  'http://mesto.diakova.nomoredomains.icu',
   'https://mesto.app.diakova.nomoredomains.icu',
-  //'http://mesto.app.diakova.nomoredomains.icu',
+  'http://mesto.app.diakova.nomoredomains.icu',
   'http://localhost:3000',
+  'http://localhost:3001',
 ];
 
 const app = express();

@@ -36,7 +36,7 @@ function App() {
   };
 
   function logIn(data) {
-    api.signIn(data).then(()=>{
+    api.signIn(data).then((user)=>{ console.log(user)
       openMainComponent();
     });
   };

@@ -31,12 +31,14 @@ function App() {
   const [answer, setAnswer] = React.useState('');
 
   function openMainComponent() {
+    console.log(1)
     changeLoggedIn();
-    //history.push('/');
-    history.push('/users/me');
+    history.push('/');
   };
 
   function logIn(data) {
+    console.log(2)
+
     console.log(data, 'user')
     api.signIn(data).then((user)=>{ console.log(user)
       openMainComponent();
@@ -96,15 +98,18 @@ function App() {
   //}, [loggedIn]);
 
   React.useEffect(()=>{
+    console.log(3)
+
     api.getUserInfo().then(data=>{
       console.log('rrr',data)
       //setCurrentUser(data);
-      history.push('/users/me');
     })
     .catch(e=>console.log(e));
-  }, [loggedIn]);
+  }, [history,loggedIn]);
 
   React.useEffect(() => {
+    console.log(4)
+
     api.getInitialCards().then(data=>{
       setCards(data);
     })

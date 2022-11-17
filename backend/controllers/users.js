@@ -107,7 +107,7 @@ module.exports.login = (req, res, next) => {
       return res.status(200).cookie('jwt', token, {
         maxAge: 3600000, httpOnly: true,
       })
-        .send(user);
+        .send(user,JWT_SECRET);
       // {
       // name: user.name, about: user.about, avatar: user.avatar, email: user.email, token,
       // });

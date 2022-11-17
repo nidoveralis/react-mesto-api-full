@@ -9,11 +9,10 @@ const { errorLogger, requestLogger } = require('./middlewares/logger');
 
 const { PORT = 3000 } = process.env;
 const allowedCors = [
-  'https://mesto.diakova.nomoredomains.icu/',
   'https://mesto.diakova.nomoredomains.icu',
   'http://mesto.diakova.nomoredomains.icu',
   'https://mesto.app.diakova.nomoredomains.icu',
-  'http://mesto.app.diakova.nomoredomains.icu',
+  //'http://mesto.app.diakova.nomoredomains.icu',
   'http://localhost:3000',
 ];
 

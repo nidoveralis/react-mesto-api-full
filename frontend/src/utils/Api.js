@@ -151,7 +151,7 @@ import config from './utils'
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    credentials: 'include',
+   // credentials: 'include',
     body:JSON.stringify({
       email: data.email,
       password: data.password

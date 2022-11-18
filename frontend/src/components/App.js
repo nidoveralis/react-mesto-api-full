@@ -31,17 +31,16 @@ function App() {
   const [answer, setAnswer] = React.useState('');
 
   function openMainComponent() {
-    console.log(1)
     changeLoggedIn();
     history.push('/');
   };
 
   function logIn(data) {
-    console.log(2)
-
-    console.log(data, 'user')
     api.signIn(data).then((user)=>{ console.log(user)
-      openMainComponent();
+      //openMainComponent();
+      api.checkToken(user).then(data=>{
+        setUserData(data.data.email);
+        openMainComponent();})
     })
     .catch(err=>console.log(err))
   };
@@ -98,23 +97,23 @@ function App() {
   //}, [loggedIn]);
 
   React.useEffect(()=>{
-    console.log(3)
-
-    api.getUserInfo().then(data=>{
-      console.log('rrr',data)
-      //setCurrentUser(data);
-    })
-    .catch(e=>console.log(e));
+    if(loggedIn) {
+      api.getUserInfo().then(data=>{
+        console.log(data)
+        //setCurrentUser(data);
+      })
+      .catch(e=>console.log(e));
+    }
+    
   }, [history,loggedIn]);
 
-  React.useEffect(() => {
-    console.log(4)
+  //React.useEffect(() => {
 
-    api.getInitialCards().then(data=>{
-      setCards(data);
-    })
-    .catch(e=>console.log(e));
-  }, []);
+    //api.getInitialCards().then(data=>{
+      //setCards(data);
+    //})
+    //.catch(e=>console.log(e));
+  //}, []);
 
   function handleUpdateUser(user) {
     api.setUserInfo(user).then(data=>{

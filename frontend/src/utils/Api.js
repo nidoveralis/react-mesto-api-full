@@ -161,8 +161,7 @@ import config from './utils'
     .then((response => response.json()))
     .then((data) => {
       if (data.token){
-        console.log('signIn')
-        return data;
+        //return data;
       } 
     })
   };

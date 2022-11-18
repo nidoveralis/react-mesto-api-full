@@ -12,6 +12,7 @@ const allowedCors = [
   'https://mesto.diakova.nomoredomains.icu',
   'http://mesto.diakova.nomoredomains.icu',
   'https://mesto.app.diakova.nomoredomains.icu',
+  'http://mesto.app.diakova.nomoredomains.icu',
   'http://localhost:3000',
   'http://localhost:3001',
 ];

@@ -16,8 +16,7 @@
   "bugs": {
     "url": "https://github.com/nidoveralis/express-mesto-gha/issues"
   },
-  //"homepage": "https://github.com/nidoveralis/express-mesto-gha#readme",
-  "homepage": "https://mesto.app.diakova.nomoredomains.icu",
+  "homepage": "https://github.com/nidoveralis/express-mesto-gha#readme",
   "devDependencies": {
     "dotenv": "^16.0.3",
     "eslint": "^8.25.0",

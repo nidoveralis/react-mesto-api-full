@@ -24,7 +24,7 @@ function Login(props) {
   return(
     <div className="login">
       <form className="login__form">
-        <h2 className="login__title">Войти</h2>
+        <h2 className="login__title">Вoooooойти</h2>
         <fieldset className="login__field">
           <input type='text' className="login__input" name="mail" placeholder="Email" onChange={emailInputValue} />
         </fieldset>

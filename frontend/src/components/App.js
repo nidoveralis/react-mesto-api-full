@@ -37,10 +37,10 @@ function App() {
 
   function logIn(data) {
     api.signIn(data).then((user)=>{ console.log(user)
-      //openMainComponent();
-      api.checkToken(user).then(data=>{
-        setUserData(data.data.email);
-        openMainComponent();})
+      openMainComponent();
+      //api.checkToken(user).then(data=>{
+        //setUserData(data.data.email);
+        //openMainComponent();})
     })
     .catch(err=>console.log(err))
   };

@@ -36,13 +36,16 @@ function App() {
   };
 
   function logIn(data) {
-    api.signIn(data).then((user)=>{
+    api.signIn(data).then(()=>{
       openMainComponent();
-      api.checkToken(user).then(data=>{console.log(data); console.log('jjj')
-        setUserData(data.data.email);
-        openMainComponent();})
-    })
-    .catch(err=>console.log(err))
+    });
+    //api.signIn(data).then((user)=>{
+      //openMainComponent();
+     // api.checkToken(user).then(data=>{console.log(data); console.log('jjj')
+       // setUserData(data.data.email);
+       // openMainComponent();})
+    //})
+    //.catch(err=>console.log(err))
   };
   
   function removeUserToken() {
@@ -100,7 +103,8 @@ function App() {
     if(loggedIn) {
       api.getUserInfo().then(data=>{
         console.log(data)
-        //setCurrentUser(data);
+        setCurrentUser(data);
+        setCards(data);//
       })
       .catch(e=>console.log(e));
     }

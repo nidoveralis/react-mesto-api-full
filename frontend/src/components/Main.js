@@ -19,7 +19,7 @@ function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onCa
         <button className="profile__add-button button" type="button" onClick={onAddPlace} />
       </section>
       <section className="elements">
-       
+       {cards.data ? <p>est</p> :  <p>nety</p>}
       </section>
     </main>
   )

@@ -155,48 +155,46 @@ function App() {
     })
     .catch(e=>console.log(e))
   };
-console.log(currentUser)
+
   return (
-    <CurrentUserContext.Provider value={currentUser} >
       <div className="App">
           <div className="page">
-            <Header message={userData} onSingOut={removeUserToken}/>
-            <Switch>
-              <ProtectedRoute exact path="/" 
-                compoment={Main}
-                onEditAvatar = {handleEditAvatarClick} 
-                onEditProfile={handleEditProfileClick} 
-                onAddPlace ={handleAddPlaceClick} 
-                onCardClick = {handleCardClick} 
-                cards={cards} 
-                onCardLike={handleCardLike} 
-                onCardDelete={handleCardDelete}
-               loggedIn={loggedIn}>
-              </ProtectedRoute>
-              <Route path="/signin" >
-                <Login handleLogin={changeLoggedIn} onLogin={logIn} answer={handleInfoTool}/>
-              </Route>
-              <Route path="/signup" >
-                <Register answer={handleInfoTool}/>
-              </Route>
-              <Route path="*" >
-                <Redirect to="/" />
-              </Route>
-              <Route >
-                {loggedIn ?  <Redirect to="/" /> : <Redirect to="/signin" />}
-              </Route>
-            </Switch>
-            <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
-            <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} /> 
-            <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleUpdateAddPlace} />
-            <PopupWithForm onClose = {closeAllPopups} active = {false} name = {'deleteCard'} title = {'Вы уверены?'} children = {<input type="submit" value="Да" className="popup__button-save popup__button-save_delete" />}/>
-            <ImagePopup active = {isImagePopupOpen} onClose = {closeAllPopups} card={selectedCard} />
-            <InfoTooltip active = {infoTooltipPopupOpen} onClose = {closeAllPopups} answer={answer}/>
+            <CurrentUserContext.Provider value={currentUser} >
+              <Header message={userData} onSingOut={removeUserToken}/>
+              <Switch>
+                <ProtectedRoute exact path="/" 
+                  compoment={Main}
+                  onEditAvatar = {handleEditAvatarClick} 
+                  onEditProfile={handleEditProfileClick} 
+                  onAddPlace ={handleAddPlaceClick} 
+                  onCardClick = {handleCardClick} 
+                  cards={cards} 
+                  onCardLike={handleCardLike} 
+                  onCardDelete={handleCardDelete}
+                loggedIn={loggedIn}>
+                </ProtectedRoute>
+                <Route path="/signin" >
+                  <Login handleLogin={changeLoggedIn} onLogin={logIn} answer={handleInfoTool}/>
+                </Route>
+                <Route path="/signup" >
+                  <Register answer={handleInfoTool}/>
+                </Route>
+                <Route path="*" >
+                  <Redirect to="/" />
+                </Route>
+                <Route >
+                  {loggedIn ?  <Redirect to="/" /> : <Redirect to="/signin" />}
+                </Route>
+              </Switch>
+              <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
+              <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} /> 
+              <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleUpdateAddPlace} />
+              <PopupWithForm onClose = {closeAllPopups} active = {false} name = {'deleteCard'} title = {'Вы уверены?'} children = {<input type="submit" value="Да" className="popup__button-save popup__button-save_delete" />}/>
+              <ImagePopup active = {isImagePopupOpen} onClose = {closeAllPopups} card={selectedCard} />
+              <InfoTooltip active = {infoTooltipPopupOpen} onClose = {closeAllPopups} answer={answer}/>
+            </CurrentUserContext.Provider>
           </div>
       </div>
-      
-      
-    </CurrentUserContext.Provider>
   );
 }
 

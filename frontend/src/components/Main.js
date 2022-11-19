@@ -5,7 +5,7 @@ import {CurrentUserContext} from '../contexts/CurrentUserContext';
 function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onCardLike, onCardDelete}) {
 
   const userContext = React.useContext(CurrentUserContext);
-  console.log('main', cards.data)
+  console.log(userContext.avatar)//('main', cards.data)
   return(
     <main className="content">
       <section className="profile">
@@ -19,6 +19,7 @@ function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onCa
         <button className="profile__add-button button" type="button" onClick={onAddPlace} />
       </section>
       <section className="elements">
+       {cards.data ? <p>est</p> :  <p>nety</p>}
       </section>
     </main>
   )

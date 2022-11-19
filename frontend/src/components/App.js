@@ -120,8 +120,8 @@ function App() {
     const isLiked = card.likes.includes(currentUser._id);
     console.log('ap',isLiked)
 
-    api.changeLikeCardStatus(card._id, false).then((newCard) => {console.log(newCard)
-      //setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+    api.changeLikeCardStatus(card._id, false).then((newCard) => {console.log('app',newCard)
+      //setCards((state) => state.map((c) => c._id === card._id ? newCard.data : c));
     })
     .catch(e=>console.log(e))
   };

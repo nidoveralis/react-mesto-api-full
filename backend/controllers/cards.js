@@ -5,7 +5,7 @@ const ForbiddenError = require('../errors/ForbiddenError');
 
 module.exports.getCards = (req, res, next) => {
   Card.find({})
-    .then((cards) => res.send({ data: cards }))
+    .then((cards) => res.send( cards ))
     .catch(next);
 };
 
@@ -77,7 +77,7 @@ module.exports.dislikeCard = (req, res, next) => {
       if (card === null) {
         next(new NotFound('Переданы некорректные данные для снятия лайка.'));
       } else {
-        res.send({ data: card });
+        res.send(card );
       }
     })
     .catch((err) => {

@@ -89,7 +89,7 @@ function App() {
         setUserData(user.data.email);
       });
       api.getInitialCards().then(card=>{
-        setCards(card.data);
+        setCards(card);
       })
     }
     

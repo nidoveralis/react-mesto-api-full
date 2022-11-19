@@ -84,12 +84,11 @@ function App() {
 
   React.useEffect(()=>{
     if(loggedIn) {
-      api.getUserInfo().then(data=>{
-        console.log(data)
-        setCurrentUser(data.data);
+      api.getUserInfo().then(user=>{
+        setCurrentUser(user.data);
       });
-      api.getInitialCards().then(data=>{
-        setCards(data);
+      api.getInitialCards().then(card=>{
+        setCards(card.data);
       })
     }
     

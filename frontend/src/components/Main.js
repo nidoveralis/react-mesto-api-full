@@ -19,13 +19,17 @@ function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onCa
         <button className="profile__add-button button" type="button" onClick={onAddPlace} />
       </section>
       <section className="elements">
-       {cards.data ? <p>est</p> :  <p>nety</p>}
+      {cards.map(card=> (
+        <Card key = {card._id} card = {card} openCard = {onCardClick} onCardLike = {onCardLike} onCardDelete={onCardDelete} />
+      ))}
       </section>
     </main>
   )
 }
 
 export default Main;
+//       {cards.data ? <p>est</p> :  <p>nety</p>}
+
 //{cards.map(card=> (
   //<Card key = {card._id} card = {card} openCard = {onCardClick} onCardLike = {onCardLike} onCardDelete={onCardDelete} />
 //))}

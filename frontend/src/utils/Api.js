@@ -92,6 +92,7 @@ import config from './utils'
       }
       })
       .then(res=>this._getResponseData(res))
+      .then(data=>console.log(data))
     }else{
       return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
         method: 'PUT',
@@ -102,6 +103,7 @@ import config from './utils'
         }
       })
       .then(res=>this._getResponseData(res))
+      .then(data=>console.log(data))
     }
     
   };

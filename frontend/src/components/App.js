@@ -85,8 +85,8 @@ function App() {
   React.useEffect(()=>{
     if(loggedIn) {
       api.getUserInfo().then(user=>{
-        setCurrentUser(user.data);
-        setUserData(user.data.email);
+        setCurrentUser(user);
+        setUserData(user.email);
       });
       api.getInitialCards().then(card=>{
         setCards(card);
@@ -98,7 +98,7 @@ function App() {
   function handleUpdateUser(user) {
     api.setUserInfo(user).then(()=>{
       api.getUserInfo().then(user=>{
-        setCurrentUser(user.data);
+        setCurrentUser(user);
       });
       //setCurrentUser(data);
       closeAllPopups();
@@ -108,7 +108,7 @@ function App() {
   function handleUpdateAvatar(avatar) {
     api.setUserAvatar(avatar).then(()=>{
       api.getUserInfo().then(user=>{
-        setCurrentUser(user.data);
+        setCurrentUser(user);
       });
       //setCurrentUser(data);
       closeAllPopups();

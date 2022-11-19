@@ -43,7 +43,7 @@ module.exports.getUserMe = (req, res, next) => {
       if (user === null) {
         next(new NotFound('Пользователь не найден.'));
       } else {
-        res.send({ data: user });
+        res.send(user);
       }
     })
     .catch((err) => {
@@ -61,7 +61,7 @@ module.exports.getUserById = (req, res, next) => {
       if (user === null) {
         next(new NotFound('Пользователь не найден.'));
       } else {
-        res.send({ data: user });
+        res.send(user);
       }
     })
     .catch((err) => {
@@ -76,7 +76,7 @@ module.exports.getUserById = (req, res, next) => {
 module.exports.editUser = (req, res, next) => {
   const { name, about } = req.body;
   User.findByIdAndUpdate(req.user._id, { name, about }, { runValidators: true, new: true })
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new IncorrectData('Переданы некорректные данные при обновлении профиля.'));
@@ -89,7 +89,7 @@ module.exports.editUser = (req, res, next) => {
 module.exports.editAvatar = (req, res, next) => {
   const { avatar } = req.body;
   User.findByIdAndUpdate(req.user._id, { avatar }, { new: true, runValidators: true })
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new IncorrectData('Переданы некорректные данные при обновлении аватара.'));
@@ -115,27 +115,3 @@ module.exports.login = (req, res, next) => {
       next(new IncorrectImailOrPassword('Неправильный логин или пароль'));
     });
 };
-
-// module.exports.login = (req, res, next) => {
-// const { email, password } = req.body;
-// User.findOne({ email })
-// .select('+password')
-// .then((data) => {
-// if (!data) {
-// return res.status(401).send({ message: 'Неправильный логин или пароль' });
-// }
-// return bcrypt
-// .compare(password, data.password)
-// .then((matched) => {
-//  if (!matched) {
-//   return res.status(401).send({ message: 'Неправильный логин или пароль' });
-// }
-// return data;
-// })
-// .then((data) => {
-// const token = jwt.sign({ _id: data._id }, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key', { expiresIn: '7d' });
-// res.status(200).send({ token });
-// });
-// })
-// .catch(next);
-// };

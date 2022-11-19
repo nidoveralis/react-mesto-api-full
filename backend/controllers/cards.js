@@ -5,7 +5,7 @@ const ForbiddenError = require('../errors/ForbiddenError');
 
 module.exports.getCards = (req, res, next) => {
   Card.find({})
-    .then((cards) => res.send( cards ))
+    .then((cards) => res.send(cards))
     .catch(next);
 };
 
@@ -13,7 +13,7 @@ module.exports.createCard = (req, res, next) => {
   const owner = req.user._id;
   const { name, link } = req.body;
   Card.create({ name, link, owner })
-    .then((card) => res.send({ data: card }))
+    .then((card) => res.send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new IncorrectData('Переданы некорректные данные при создании карточки.'));
@@ -31,7 +31,7 @@ module.exports.deleteCard = (req, res, next) => {
       } else if (JSON.stringify(req.user._id) !== JSON.stringify(card.owner)) {
         next(new ForbiddenError('Нельзя удалить чужую карточку'));
       } else {
-        res.send({ data: card });
+        res.send(card);
       }
       return card.remove()
         .then(() => res.send({ message: 'Карточка удалена' }));
@@ -55,7 +55,7 @@ module.exports.likeCard = (req, res, next) => {
       if (card === null) {
         next(new NotFound('Переданы некорректные данные для постановки лайка.'));
       } else {
-        res.send({ data: card });
+        res.send(card);
       }
     })
     .catch((err) => {
@@ -77,7 +77,7 @@ module.exports.dislikeCard = (req, res, next) => {
       if (card === null) {
         next(new NotFound('Переданы некорректные данные для снятия лайка.'));
       } else {
-        res.send(card );
+        res.send(card);
       }
     })
     .catch((err) => {

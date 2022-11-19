@@ -103,7 +103,7 @@ function App() {
     if(loggedIn) {
       api.getUserInfo().then(data=>{
         console.log(data)
-        setCurrentUser(data);
+        setCurrentUser(data.data);
         setCards(data);//
       })
       .catch(e=>console.log(e));

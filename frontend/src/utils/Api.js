@@ -159,11 +159,11 @@ import config from './utils'
     },
     )
     .then((response => response.json()))
-    //.then((data) => {
-      //if (data.token){
-        //return data;
-     // } 
-    //})
+    .then((data) => {
+      if (data.token){
+        return data;
+      } 
+    })
   };
 
   checkToken(token) {

@@ -108,7 +108,6 @@ function App() {
   function handleUpdateAvatar(avatar) {
     api.setUserAvatar(avatar).then(()=>{
       api.getUserInfo().then(user=>{
-        console.log(user.data)
         setCurrentUser(user.data);
       });
       //setCurrentUser(data);
@@ -118,14 +117,13 @@ function App() {
 
   function handleCardLike(card) {
     //const isLiked = card.likes.some(i => i._id === currentUser._id);
-    //const isLiked = card.likes.includes(currentUser._id);
-    console.log('ap',card.likes)
-    const isLiked = true
+    const isLiked = card.likes.includes(currentUser._id);
+    console.log('ap',isLiked)
 
-    api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
-      setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-    })
-    .catch(e=>console.log(e))
+    //api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
+      //setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+    //})
+    //.catch(e=>console.log(e))
   };
 
   function handleUpdateAddPlace(item) {

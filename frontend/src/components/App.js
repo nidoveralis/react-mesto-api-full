@@ -106,8 +106,11 @@ function App() {
   };
 
   function handleUpdateAvatar(avatar) {
-    api.setUserAvatar(avatar).then(data=>{
-      setCurrentUser(data);
+    api.setUserAvatar(avatar).then(()=>{
+      api.getUserInfo().then(user=>{
+        setCurrentUser(user.data);
+      });
+      //setCurrentUser(data);
       closeAllPopups();
     })
   };

@@ -96,8 +96,11 @@ function App() {
   }, [loggedIn]);
 
   function handleUpdateUser(user) {
-    api.setUserInfo(user).then(data=>{
-      setCurrentUser(data);
+    api.setUserInfo(user).then(()=>{
+      api.getUserInfo().then(user=>{
+        setCurrentUser(user.data);
+      });
+      //setCurrentUser(data);
       closeAllPopups();
     })
   };

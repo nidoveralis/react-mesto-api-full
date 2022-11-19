@@ -5,7 +5,7 @@ import {CurrentUserContext} from '../contexts/CurrentUserContext';
 function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onCardLike, onCardDelete}) {
 
   const userContext = React.useContext(CurrentUserContext);
-  
+  console.log('main', cards.data)
   return(
     <main className="content">
       <section className="profile">
@@ -19,12 +19,13 @@ function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onCa
         <button className="profile__add-button button" type="button" onClick={onAddPlace} />
       </section>
       <section className="elements">
-        {cards.data.map(card=> (
-          <Card key = {card._id} card = {card} openCard = {onCardClick} onCardLike = {onCardLike} onCardDelete={onCardDelete} />
-        ))}
+       
       </section>
     </main>
   )
 }
 
 export default Main;
+//{cards.map(card=> (
+  //<Card key = {card._id} card = {card} openCard = {onCardClick} onCardLike = {onCardLike} onCardDelete={onCardDelete} />
+//))}

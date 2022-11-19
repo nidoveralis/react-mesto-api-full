@@ -86,6 +86,7 @@ function App() {
     if(loggedIn) {
       api.getUserInfo().then(user=>{
         setCurrentUser(user.data);
+        setUserData(user.data.email);
       });
       api.getInitialCards().then(card=>{
         setCards(card.data);

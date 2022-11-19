@@ -6,7 +6,7 @@ function Card({card, openCard, onCardLike, onCardDelete}) {
   const isOwn = card.owner === currentUser._id;
   //const isLiked = card.likes.some(i => i._id === currentUser._id);
   const isLiked = card.likes.includes(currentUser._id);
-  console.log('ap',isLiked)
+  console.log('card',isLiked)
 
   const cardDeleteButtonClassName = (
     `element__delete  popup-button ${isOwn ? "element__delete_active" : ""}`
@@ -38,5 +38,4 @@ function Card({card, openCard, onCardLike, onCardDelete}) {
   )
 };
 export default Card
-//
-<button className={cardLikeButtonClassName} type="button" onClick={handleLikeClick} />
+//<button className={cardLikeButtonClassName} type="button" onClick={handleLikeClick} />

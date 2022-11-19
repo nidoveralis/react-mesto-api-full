@@ -36,9 +36,9 @@ function App() {
   };
 
   function logIn(data) {
-    api.signIn(data).then((user)=>{ console.log(user)
+    api.signIn(data).then((user)=>{
       openMainComponent();
-      //api.checkToken(user).then(data=>{
+      api.checkToken(user).then(data=>{console.log(data); console.log('jjj')})
         //setUserData(data.data.email);
         //openMainComponent();})
     })

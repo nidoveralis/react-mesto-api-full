@@ -155,7 +155,7 @@ function App() {
     })
     .catch(e=>console.log(e))
   };
-
+console.log(currentUser)
   return (
     <CurrentUserContext.Provider value={currentUser} >
       <div className="App">

@@ -103,7 +103,7 @@ import config from './utils'
         }
       })
       .then(res=>this._getResponseData(res))
-      .then(data=>console.log('put ok', data))
+      //.then(data=>console.log('put ok', data))
     }
     
   };

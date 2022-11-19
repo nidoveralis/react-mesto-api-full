@@ -11,7 +11,7 @@ function Card({card, openCard, onCardLike, onCardDelete}) {
   const cardDeleteButtonClassName = (
     `element__delete  popup-button ${isOwn ? "element__delete_active" : ""}`
   ); 
-  //const cardLikeButtonClassName = `element__like button ${isLiked ? "element__like_active" : ""} `;
+  const cardLikeButtonClassName = `element__like button ${isLiked ? "element__like_active" : ""} `;
   
   function handelCardClick() {
     openCard(card);
@@ -31,7 +31,7 @@ function Card({card, openCard, onCardLike, onCardDelete}) {
       <img className="element__image" style={{ backgroundImage: `url(${card.link})`}} onClick={handelCardClick} />
      <h2 className="element__title">{card.name}</h2>
       <div className="element__like-conteiner">
-        <button className='element__like button' type="button" onClick={handleLikeClick} />
+        <button className={cardLikeButtonClassName} type="button" onClick={handleLikeClick} />
         <span className="element__like-count">{card.likes.length}</span>
       </div>
     </div>

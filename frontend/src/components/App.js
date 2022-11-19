@@ -39,13 +39,6 @@ function App() {
     api.signIn(data).then(()=>{
       openMainComponent();
     });
-    //api.signIn(data).then((user)=>{
-      //openMainComponent();
-     // api.checkToken(user).then(data=>{console.log(data); console.log('jjj')
-       // setUserData(data.data.email);
-       // openMainComponent();})
-    //})
-    //.catch(err=>console.log(err))
   };
   
   function removeUserToken() {
@@ -89,35 +82,18 @@ function App() {
     //setAnswer('')
   };
 
-  //React.useEffect(()=>{
-    //const jwt = localStorage.getItem('jwt');
-      //if(jwt) {
-        //api.checkToken(jwt).then(data=>{
-          //setUserData(data.data.email);
-          //openMainComponent();
-        //});
-      //}
-  //}, [loggedIn]);
-
   React.useEffect(()=>{
     if(loggedIn) {
       api.getUserInfo().then(data=>{
         console.log(data)
         setCurrentUser(data.data);
-        setCards(data);//
+      });
+      api.getInitialCards().then(data=>{
+        setCards(data);
       })
-      .catch(e=>console.log(e));
     }
     
-  }, [history,loggedIn]);
-
-  //React.useEffect(() => {
-
-    //api.getInitialCards().then(data=>{
-      //setCards(data);
-    //})
-    //.catch(e=>console.log(e));
-  //}, []);
+  }, [loggedIn]);
 
   function handleUpdateUser(user) {
     api.setUserInfo(user).then(data=>{

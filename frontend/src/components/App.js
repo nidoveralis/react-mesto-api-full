@@ -108,6 +108,7 @@ function App() {
   function handleUpdateAvatar(avatar) {
     api.setUserAvatar(avatar).then(()=>{
       api.getUserInfo().then(user=>{
+        console.log(user.data)
         setCurrentUser(user.data);
       });
       //setCurrentUser(data);

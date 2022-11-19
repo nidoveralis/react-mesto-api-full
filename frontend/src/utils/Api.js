@@ -95,7 +95,11 @@ import config from './utils'
     }else{
       return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
         method: 'PUT',
-        headers: this._headers
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        }
       })
       .then(res=>this._getResponseData(res))
     }

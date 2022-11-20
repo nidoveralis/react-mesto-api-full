@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/nidoveralis/express-mesto-gha#readme",
   "devDependencies": {
-    "dotenv": "^16.0.3",
     "eslint": "^8.25.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",

@@ -28,6 +28,7 @@ module.exports.createUser = (req, res, next) => {
       .catch((err) => {
         if (err.code === 11000) {
           next(new UsedEmail('Пользователь с таким email уже зарегистрирован.'));
+          return;
         }
         if (err.name === 'ValidationError') {
           next(new IncorrectData('Переданы некорректные данные.'));
@@ -112,6 +113,7 @@ module.exports.login = (req, res, next) => {
       res.status(200).send({ token });
     })
     .catch(() => {
-      next(new IncorrectImailOrPassword('Неправильный логин или пароль'));
+      next();
+      // next(new IncorrectImailOrPassword('Неправильный логин или пароль'));
     });
 };

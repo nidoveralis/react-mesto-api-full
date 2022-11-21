@@ -1,4 +1,7 @@
+require('dotenv').config();
+
 const { NODE_ENV, JWT_SECRET = 'dev-secret' } = process.env;
+console.log(NODE_ENV, JWT_SECRET);
 const jwt = require('jsonwebtoken');
 const IncorrectImailOrPassword = require('../errors/IncorrectImailOrPassword');
 

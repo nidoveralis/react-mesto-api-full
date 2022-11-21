@@ -1,7 +1,6 @@
 require('dotenv').config();
 
 const { NODE_ENV, JWT_SECRET = 'dev-secret' } = process.env;
-console.log(NODE_ENV, JWT_SECRET);
 const jwt = require('jsonwebtoken');
 const IncorrectImailOrPassword = require('../errors/IncorrectImailOrPassword');
 
@@ -12,7 +11,7 @@ module.exports = (req, res, next) => {
     return;
   }
   let payload;
-
+  console.log( NODE_ENV, JWT_SECRET)
   try {
     payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
   } catch (err) {

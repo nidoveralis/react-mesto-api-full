@@ -113,6 +113,5 @@ module.exports.login = (req, res, next) => {
     })
     .catch(() => {
       next();
-      // next(new IncorrectImailOrPassword('Неправильный логин или пароль'));
     });
 };

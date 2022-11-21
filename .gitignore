@@ -28,5 +28,7 @@ build
 .npm
 
 # Optional REPL history
-.vscode
+.DS_Store
+.idea
 .env
+*.log

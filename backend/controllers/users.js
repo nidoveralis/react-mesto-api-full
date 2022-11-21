@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const IncorrectData = require('../errors/IncorrectData');
-const IncorrectImailOrPassword = require('../errors/IncorrectImailOrPassword');
 const UsedEmail = require('../errors/UsedEmail');
 const NotFound = require('../errors/NotFound');
 

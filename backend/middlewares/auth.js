@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
   let payload;
 
   try {
-    payload = jwt.verify(token, JWT_SECRET);
+    payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
   } catch (err) {
     next(new IncorrectImailOrPassword('Необходима авторизация.'));
     return;
@@ -20,4 +20,3 @@ module.exports = (req, res, next) => {
   req.user = payload;
   next();
 };
-//    payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');

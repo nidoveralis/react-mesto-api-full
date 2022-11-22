@@ -7,7 +7,6 @@ module.exports = (req, res, next) => {
   console.log(NODE_ENV)
   console.log(NODE_ENV === 'production')
   console.log(JWT_SECRET)
-  console.log(process.env.NODE_ENV);
   if (!token) {
     next(new IncorrectImailOrPassword('Необходима авторизация.'));
     return;

@@ -1,4 +1,4 @@
-const { JWT_SECRET = 'dev-secret', NODE_ENV } = process.env;
+const { JWT_SECRET = 'dev-secret', NODE_ENV = 'production' } = process.env;
 const jwt = require('jsonwebtoken');
 const IncorrectImailOrPassword = require('../errors/IncorrectImailOrPassword');
 

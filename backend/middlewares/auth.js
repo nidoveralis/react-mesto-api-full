@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { JWT_SECRET, NODE_ENV = 'production' } = process.env;
+const { JWT_SECRET, NODE_ENV } = process.env;
 const IncorrectImailOrPassword = require('../errors/IncorrectImailOrPassword');
 
 module.exports = (req, res, next) => {

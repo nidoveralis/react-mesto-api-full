@@ -1,4 +1,4 @@
-const { NODE_ENV, JWT_SECRET = 'dev-secret' } = process.env;
+const { JWT_SECRET = 'dev-secret', NODE_ENV } = process.env;
 const jwt = require('jsonwebtoken');
 const IncorrectImailOrPassword = require('../errors/IncorrectImailOrPassword');
 
@@ -10,7 +10,6 @@ module.exports = (req, res, next) => {
   }
   let payload;
   try {
-    console.log(NODE_ENV)
     payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
   } catch (err) {
     next(new IncorrectImailOrPassword('Необходима авторизация.'));

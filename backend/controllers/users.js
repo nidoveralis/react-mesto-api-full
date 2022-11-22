@@ -110,7 +110,8 @@ module.exports.login = (req, res, next) => {
       );
       res.cookie('jwt', token, { maxAge: 3600000, httpOnly: true, sameSite: true });
       res.status(200).send({ token});
-      console.log('jjnvnfjvnf')
+      console.log(NODE_ENV)
+      console.log(JWT_SECRET)
     })
     .catch(() => {
       next();

@@ -26,5 +26,5 @@ build
 # Optional REPL history
 .DS_Store
 .idea
-.env
+
 *.log

@@ -4,6 +4,13 @@ const IncorrectImailOrPassword = require('../errors/IncorrectImailOrPassword');
 
 module.exports = (req, res, next) => {
   const token = req.cookies.jwt;
+  const crypto = require('crypto'); // экспортируем crypto
+
+const randomString = crypto
+  .randomBytes(16) // сгенерируем случайную последовательность 16 байт (128 бит)
+  .toString('hex'); // приведём её к строке
+
+console.log(randomString); 
   console.log(process.env);
   console.log(NODE_ENV);
   console.log(JWT_SECRET)

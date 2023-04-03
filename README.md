@@ -4,5 +4,3 @@
 IP 158.160.35.180
 Frontend https://mesto.diakova.nomoredomains.icu
 Backend https://mesto.app.diakova.nomoredomains.icu
-
-Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
